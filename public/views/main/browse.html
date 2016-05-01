@@ -1,0 +1,17 @@
+<div id="browse">
+  <h1>Browse Pok&eacute;mon</h1>
+
+  <div class="loader"
+       ng-if="loading">
+        <p>Getting Pok&eacute;mon...</p>
+  </div>
+
+  <div ng-if="!loading"
+       class="pokemon">
+         <ul class="pokemon pokemon--list">
+           <li class="pokemon pokemon--list pokemon--list__names"
+               ng-repeat="pokemon in pokemon"
+               ng-click="getDetails(pokemon.name)">{{ pokemon.name }}</li>
+         </ul>
+  </div>
+</div>

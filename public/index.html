@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="PokeMean" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PokeMEAN</title>
+  <base href="/">
+  <link rel="stylesheet" href="bld/styles/main.css">
+</head>
+<body>
+
+
+  <div class="wrapper">
+
+    <div id="nav">
+      <ul>
+        <a href="/"><li>Home</li></a>
+        <a href="/browse"><li>Browse Pok&eacute;mon</li></a>
+        <a href="/my-team"><li>My Teams</li></a>
+        <a href="/profile"><li>My Porfile</li></a>
+        <!-- <li>Register</li>
+        <li>Sign Up</li> -->
+      </ul>
+    </div>
+
+    <ng-view></ng-view>
+
+  </div>
+
+  <script src="bld/scripts/vendor/angular.1.5.5.min.js"></script>
+  <script src="bld/scripts/vendor/angular-route.min.js"></script>
+  <script src="bld/scripts/vendor/angular-resource.min.js"></script>
+  <script src="bld/scripts/script.js"></script>
+</body>
+</html>

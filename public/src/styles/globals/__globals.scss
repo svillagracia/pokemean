@@ -1,0 +1,18 @@
+/* Globals
+*************************************************/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  color: $text--primary;
+  font: 16px/1.4 'Raleway', sans-serif;
+}
+
+div.wrapper {
+  position: relative;
+}
