@@ -6,12 +6,23 @@
         <p>Getting Pok&eacute;mon...</p>
   </div>
 
-  <div ng-if="!loading"
-       class="pokemon">
-         <ul class="pokemon pokemon--list">
-           <li class="pokemon pokemon--list pokemon--list__names"
+  <div class="browse--pokemon"
+       ng-if="!loading">
+         <ul role="list">
+           <li role="pokemon-name"
                ng-repeat="pokemon in pokemon"
-               ng-click="getDetails(pokemon.name)">{{ pokemon.name }}</li>
+               ng-click="getDetails(pokemon.name)">
+               <p>{{ pokemon.name }}</p>
+             <svg ng-if="loadingDetails == pokemon.name" width='15px' height='15px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-ripple"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><g> <animate attributeName="opacity" dur="2s" repeatCount="indefinite" begin="0s" keyTimes="0;0.33;1" values="1;1;0"></animate><circle cx="50" cy="50" r="40" stroke="#cec9c9" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="r" dur="2s" repeatCount="indefinite" begin="0s" keyTimes="0;0.33;1" values="0;22;44"></animate></circle></g><g><animate attributeName="opacity" dur="2s" repeatCount="indefinite" begin="1s" keyTimes="0;0.33;1" values="1;1;0"></animate><circle cx="50" cy="50" r="40" stroke="#3c302e" fill="none" stroke-width="6" stroke-linecap="round"><animate attributeName="r" dur="2s" repeatCount="indefinite" begin="1s" keyTimes="0;0.33;1" values="0;22;44"></animate></circle></g></svg>
+             <div id="details"
+                  class="expand"
+                  ng-if="selected == pokemon.name">
+                  <img src="{{ details.sprites.front_default }}">
+                  <p>{{ details.types[0].type.name }}</p>
+             </div>
+           </li>
+           <li>
+           </li>
          </ul>
   </div>
 </div>

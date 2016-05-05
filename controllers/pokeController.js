@@ -15,8 +15,18 @@ router.get('/browse', function (req, res) {
 })
 
 router.get('/details/:pokemon', function (req, res) {
-  console.log(req);
+  P.getPokemonByName(req.params.pokemon)
+  .then(function (response) {
+    res.send(response);
+  })
+  .catch(function (err) {
+    console.log('Error: ', err);
+  })
 })
+
+// router.get('/evolution/:pokemon', function (req, res) {
+//   P.getPokemonByName()
+// })
 
 
 module.exports = router;

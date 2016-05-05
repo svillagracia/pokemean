@@ -1,4 +1,4 @@
-var PokeMean = angular.module('PokeMean', ['ngRoute', 'ngResource']);
+var PokeMean = angular.module('PokeMean', ['ngRoute', 'ngResource', 'ngAnimate']);
 
 PokeMean.run(['$rootScope', function ($rootScope) {
   console.log('App is running!');

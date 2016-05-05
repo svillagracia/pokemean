@@ -16,22 +16,43 @@ PokeMean.controller('BrowseCtrl', ['$scope', '$http', function ($scope, $http) {
     });
   };
 
-  $scope.getDetails = function (pokemon) {
-    console.log('Getting details!');
-    var pokemonObject = { data: pokemon };
-    $scope.loadingDetails = true;
-    $http.get('/api/pokemon/details/' + pokemon, pokemonObject)
+  function getDetails (pokemon) {
+    switch ($scope.selected) {
+      case (pokemon):
+        $scope.selected = undefined
+        break;
+      default:
+        console.log('Getting details!');
+        var pokemonObject = { pokemon: pokemon };
+        $scope.loadingDetails = pokemon;
+        $http.get('/api/pokemon/details/' + pokemon, pokemonObject)
+        .success(function (data) {
+          $scope.selected = data.name
+          $scope.loadingDetails = null;
+          console.log(data);
+          $scope.details = data;
+          $scope.type = data.types[0].type.name
+        })
+        .error(function (err) {
+          $scope.loadingDetails = null;
+          console.log(err);
+          $scope.details = 'Uh oh! Something went wrong...';
+        })
+    }
+  }
+
+  function evoChain (pokemon) {
+    $http.get('/api/pokemon/evolution/' + pokemon, { pokemon: pokemon })
     .success(function (data) {
-      $scope.loadingDetails = false;
-      console.log(data);
-      $scope.details = data;
+      console.log(data)
     })
     .error(function (err) {
-      $scope.loadingDetails = false;
-      console.log(err);
-      $scope.details = 'Uh oh! Something went wrong...';
+      console.log(err)
     })
   }
+
+  $scope.getDetails = getDetails
+  $scope.evoChain = evoChain
 
   getPokemon();
 
